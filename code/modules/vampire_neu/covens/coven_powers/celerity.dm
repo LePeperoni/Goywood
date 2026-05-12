@@ -142,23 +142,23 @@
 	REMOVE_TRAIT(owner, TRAIT_STRENGTH_UNCAPPED, TRAIT_MIRACLE)
 
 /datum/status_effect/buff/celerity/first
-	id = "potence1"
+	id = "celerity1"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/alch/strengthpot
 	effectedstats = list(STATKEY_SPD = 2)
 /datum/status_effect/buff/celerity/second
-	id = "potence2"
+	id = "celerity2"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/alch/strengthpot
 	effectedstats = list(STATKEY_SPD = 4)
 /datum/status_effect/buff/celerity/third
-	id = "potence3"
+	id = "celerity3"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/alch/strengthpot
 	effectedstats = list(STATKEY_SPD = 6)
 /datum/status_effect/buff/celerity/fourth
-	id = "potence4"
+	id = "celerity4"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/alch/strengthpot
 	effectedstats = list(STATKEY_SPD = 8)
 /datum/status_effect/buff/celerity/fifth
-	id = "potence5"
+	id = "celerity5"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/alch/strengthpot
 	effectedstats = list(STATKEY_SPD = 10)
 
