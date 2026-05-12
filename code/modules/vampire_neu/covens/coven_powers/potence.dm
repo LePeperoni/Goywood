@@ -29,13 +29,12 @@
 
 /datum/coven_power/potence/one/activate()
 	. = ..()
-	owner.dna.species.punch_damage += 8
-	owner.potence_weapon_buff = 1
+	owner.apply_status_effect(/datum/status_effect/buff/potence/first)
+	
 
 /datum/coven_power/potence/one/deactivate()
 	. = ..()
-	owner.dna.species.punch_damage -= 8
-	owner.potence_weapon_buff = 0
+	owner.remove_status_effect(/datum/status_effect/buff/potence/first)
 	owner.remove_overlay(POTENCE_LAYER)
 
 //POTENCE 2
@@ -53,13 +52,11 @@
 
 /datum/coven_power/potence/two/activate()
 	. = ..()
-	owner.dna.species.punch_damage += 16
-	owner.potence_weapon_buff = 2
+	owner.apply_status_effect(/datum/status_effect/buff/potence/second)
 
 /datum/coven_power/potence/two/deactivate()
 	. = ..()
-	owner.dna.species.punch_damage -= 16
-	owner.potence_weapon_buff = 0
+	owner.remove_status_effect(/datum/status_effect/buff/potence/second)
 	owner.remove_overlay(POTENCE_LAYER)
 
 //POTENCE 3
@@ -76,14 +73,12 @@
 
 /datum/coven_power/potence/three/activate()
 	. = ..()
-	owner.dna.species.punch_damage += 24
-	owner.potence_weapon_buff = 3
+	owner.apply_status_effect(/datum/status_effect/buff/potence/third)
 
 
 /datum/coven_power/potence/three/deactivate()
 	. = ..()
-	owner.dna.species.punch_damage -= 24
-	owner.potence_weapon_buff = 0
+	owner.remove_status_effect(/datum/status_effect/buff/potence/third)
 	owner.remove_overlay(POTENCE_LAYER)
 
 //POTENCE 4
@@ -100,14 +95,14 @@
 
 /datum/coven_power/potence/four/activate()
 	. = ..()
-	owner.dna.species.punch_damage += 32
-	owner.potence_weapon_buff = 4
+	owner.apply_status_effect(/datum/status_effect/buff/potence/fourth)
+	ADD_TRAIT(owner, TRAIT_STRENGTH_UNCAPPED, TRAIT_MIRACLE)
 
 /datum/coven_power/potence/four/deactivate()
 	. = ..()
-	owner.dna.species.punch_damage -= 32
-	owner.potence_weapon_buff = 0
+	owner.remove_status_effect(/datum/status_effect/buff/potence/fourth)
 	owner.remove_overlay(POTENCE_LAYER)
+	REMOVE_TRAIT(owner, TRAIT_STRENGTH_UNCAPPED, TRAIT_MIRACLE)
 
 
 //POTENCE 5
@@ -124,11 +119,34 @@
 
 /datum/coven_power/potence/five/activate()
 	. = ..()
-	owner.dna.species.punch_damage += 40
-	owner.potence_weapon_buff = 5
+	owner.apply_status_effect(/datum/status_effect/buff/potence/fifth)
+	ADD_TRAIT(owner, TRAIT_STRENGTH_UNCAPPED, TRAIT_MIRACLE)
+
 
 /datum/coven_power/potence/five/deactivate()
 	. = ..()
-	owner.dna.species.punch_damage -= 40
-	owner.potence_weapon_buff = 0
+	owner.remove_status_effect(/datum/status_effect/buff/potence/fifth)
 	owner.remove_overlay(POTENCE_LAYER)
+	REMOVE_TRAIT(owner, TRAIT_STRENGTH_UNCAPPED, TRAIT_MIRACLE)
+
+
+/datum/status_effect/buff/potence/first
+	id = "potence1"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/alch/strengthpot
+	effectedstats = list(STATKEY_STR = 2)
+/datum/status_effect/buff/potence/second
+	id = "potence2"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/alch/strengthpot
+	effectedstats = list(STATKEY_STR = 4)
+/datum/status_effect/buff/potence/third
+	id = "potence3"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/alch/strengthpot
+	effectedstats = list(STATKEY_STR = 6)
+/datum/status_effect/buff/potence/fourth
+	id = "potence4"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/alch/strengthpot
+	effectedstats = list(STATKEY_STR = 8)
+/datum/status_effect/buff/potence/fifth
+	id = "potence5"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/alch/strengthpot
+	effectedstats = list(STATKEY_STR = 10)

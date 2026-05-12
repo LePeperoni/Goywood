@@ -1,6 +1,6 @@
 /datum/coven/celerity
 	name = "Celerity"
-	desc = "Boosts your speed. Violates Masquerade."
+	desc = "Boosts your speed." //THERES NO FUCKING MASQUARADE, ITS DARK AGES BEATCH!!!
 	icon_state = "celerity"
 	power_type = /datum/coven_power/celerity
 
@@ -39,7 +39,16 @@
 	toggled = TRUE
 	duration_length = 2 TURNS
 
-	multiplicative_slowdown = -0.15
+
+/datum/coven_power/celerity/one/activate()
+	. = ..()
+	owner.apply_status_effect(/datum/status_effect/buff/celerity/first)
+	
+
+/datum/coven_power/celerity/one/deactivate()
+	. = ..()
+	owner.remove_status_effect(/datum/status_effect/buff/celerity/first)
+	owner.remove_overlay(POTENCE_LAYER)
 
 //CELERITY 2
 
@@ -54,7 +63,15 @@
 	toggled = TRUE
 	duration_length = 2 TURNS
 
-	multiplicative_slowdown = -0.2
+
+/datum/coven_power/celerity/two/activate()
+	. = ..()
+	owner.apply_status_effect(/datum/status_effect/buff/celerity/second)
+
+/datum/coven_power/celerity/two/deactivate()
+	. = ..()
+	owner.remove_status_effect(/datum/status_effect/buff/celerity/second)
+	owner.remove_overlay(POTENCE_LAYER)
 
 //CELERITY 3
 /datum/coven_power/celerity/three
@@ -68,7 +85,16 @@
 	toggled = TRUE
 	duration_length = 2 TURNS
 
-	multiplicative_slowdown = -0.25
+/datum/coven_power/celerity/three/activate()
+	. = ..()
+	owner.apply_status_effect(/datum/status_effect/buff/celerity/third)
+
+
+/datum/coven_power/celerity/three/deactivate()
+	. = ..()
+	owner.remove_status_effect(/datum/status_effect/buff/celerity/third)
+	owner.remove_overlay(POTENCE_LAYER)
+
 
 //CELERITY 4
 /datum/coven_power/celerity/four
@@ -82,7 +108,14 @@
 	toggled = TRUE
 	duration_length = 2 TURNS
 
-	multiplicative_slowdown = -0.3
+/datum/coven_power/celerity/four/activate()
+	. = ..()
+	owner.apply_status_effect(/datum/status_effect/buff/celerity/fourth)
+
+/datum/coven_power/celerity/four/deactivate()
+	. = ..()
+	owner.remove_status_effect(/datum/status_effect/buff/celerity/fourth)
+	owner.remove_overlay(POTENCE_LAYER)
 
 //CELERITY 5
 /datum/coven_power/celerity/five
@@ -96,4 +129,36 @@
 	toggled = TRUE
 	duration_length = 2 TURNS
 
-	multiplicative_slowdown = -0.35
+/datum/coven_power/celerity/five/activate()
+	. = ..()
+	owner.apply_status_effect(/datum/status_effect/buff/celerity/fifth)
+	ADD_TRAIT(owner, TRAIT_STRENGTH_UNCAPPED, TRAIT_MIRACLE)
+
+
+/datum/coven_power/celerity/five/deactivate()
+	. = ..()
+	owner.remove_status_effect(/datum/status_effect/buff/celerity/fifth)
+	owner.remove_overlay(POTENCE_LAYER)
+	REMOVE_TRAIT(owner, TRAIT_STRENGTH_UNCAPPED, TRAIT_MIRACLE)
+
+/datum/status_effect/buff/celerity/first
+	id = "potence1"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/alch/strengthpot
+	effectedstats = list(STATKEY_SPD = 2)
+/datum/status_effect/buff/celerity/second
+	id = "potence2"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/alch/strengthpot
+	effectedstats = list(STATKEY_SPD = 4)
+/datum/status_effect/buff/celerity/third
+	id = "potence3"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/alch/strengthpot
+	effectedstats = list(STATKEY_SPD = 6)
+/datum/status_effect/buff/celerity/fourth
+	id = "potence4"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/alch/strengthpot
+	effectedstats = list(STATKEY_SPD = 8)
+/datum/status_effect/buff/celerity/fifth
+	id = "potence5"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/alch/strengthpot
+	effectedstats = list(STATKEY_SPD = 10)
+
